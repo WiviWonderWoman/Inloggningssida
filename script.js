@@ -1,46 +1,64 @@
 'use strict';
 console.log('test');
 const app = {
-    // key:"test",
-    // value: "1234",
-    namnFält: document.createElement('input'),
-    namn: namnFält.value,
-    lösenFält: document.createElement('input'),
-    lösen: lösenFält.value,
+    key: "test",
+    value: "1234",
     meny: document.getElementById('meny'),
     inKnapp: document.createElement('button'),
     utKnapp: document.createElement('button'),
-    inText: document.createTextNode("Vad trevligt att du loggade hit!"),
-    utTex: document.createTextNode("Du är nu utloggad. Välkommen åter!"),
-    felText: document.createTextNode("Hoppsan, har du glömt koden?"),
+    reKnapp: document.createElement('button'),   
 }
-//OM localStorage är tomt
-    //VISA namnFält
-    //VISA lösenFält
-    //VISA inKnapp
+localStorage;
+console.log(localStorage);
+if (localStorage.length === 1){
+    welcomePage();
+}
+else{
+    inlogPage();
+}
+function inlogPage(){
+    document.body.innerHTML = "";
+    document.body.insertAdjacentHTML("afterbegin",`<br /><h1 id = "h1">LOGGA IN</h1><label for= "namnFält">Användarnamn</label><br/ >
+    <input id = "namnFält"></input><br /><label for= "lösenFält">Lösenord</label><br/ ><input id = "lösenFält"></input><br /><br />`);
+    app.inKnapp.innerText = 'Logga in';
 
-    //LYSSNA på inKnapp
-        //VID klick på inKnapp
+    document.body.appendChild(app.inKnapp).addEventListener('click', function(){
+        const namn = namnFält.value;
+        const lösen = lösenFält.value;
+        console.log(namn);
+        console.log(lösen);
 
-            //OM namn === test && lösen === 1234 
-                //SPARA i localStorage
-                //VISA inText
-                //VISA utKnapp
+        if (namn === app.key && lösen === app.value){
+            localStorage.setItem(namn, lösen);
+            welcomePage();
+            console.log(localStorage);
+        }
 
-                //LYSSNA på utKnapp
-                    //VID klick på utKnapp
+        else if (namn !== app.key && lösen !== app.value){
+            document.body.innerHTML = "";
+            document.body.insertAdjacentHTML("afterbegin",`<br /><h1 id = "h1">HOPPSAN!</h1><br/ ><p>Har du glömt dina inloggningsuppgifter?</p><br/ >`);
+            document.body.appendChild(app.reKnapp).innerText = 'Försök igen';
+            app.reKnapp.addEventListener('click', function(){
+                inlogPage();
+                console.log(localStorage);
+             });
+        }      
+    });
+};
+console.log(localStorage);
 
-                        //TÖM localStorage
-                        //VISA utText
-            //ANNARS
-                //VISA felText
-
-//ANNARS
-    //VISA inText
-    //VISA utKnapp
-
-    //LYSSNA på utKnapp
-        //VID klick på utKnapp
-
-            //TÖM localStorage
-            //VISA utText
+function welcomePage(){
+    document.body.innerHTML = "";
+    document.body.insertAdjacentHTML("afterbegin",`<br /><h1 id = "h1">VÄLKOMMEN!</h1><br/ ><br/ >`);
+    app.utKnapp.innerText = 'Logga ut';
+    document.body.appendChild(app.utKnapp).addEventListener('click', function(){
+        localStorage.clear();
+        console.log(localStorage);
+        document.body.innerHTML = "";
+        document.body.insertAdjacentHTML("afterbegin",`<br /><h1 id = "h1">TACK FÖR BESÖKET!</h1><br/ ><br/ >`);
+        document.body.appendChild(app.reKnapp).innerText = "Tillbaka";
+        app.reKnapp.addEventListener('click', function(){
+            inlogPage();
+        });
+    });
+};
