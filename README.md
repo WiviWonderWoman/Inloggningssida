@@ -1,4 +1,5 @@
 # Inloggningssida
+100/100 (VG)
 ## Inlämning: Skapa en inloggningssida- Webbapplikation MVP - september 2020
 Vi avslutar Javascript-introduktionen med att skapa en inloggningssida.
 Kravspecifikation:
