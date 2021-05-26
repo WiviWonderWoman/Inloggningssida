@@ -1,8 +1,12 @@
 # Inloggningssida
 100/100 (VG)
 ## Inlämning: Skapa en inloggningssida- Webbapplikation MVP - september 2020
-Vi avslutar Javascript-introduktionen med att skapa en inloggningssida.
-Kravspecifikation:
+### Läranderesultat
+1. utveckla och utforma klientsidan av statiska och dynamiska webbsidor för exempelvis en enklare företagssida
+2. tillämpa lämpliga metoder, tekniker och verktyg för effektiv mjukvaruutveckling
+3. konfigurera och använda en enklare lokal utvecklingsmiljö för webbutvecklingsprojekt
+berörs till viss del.
+### Kravspecifikation:
 * Sidan skall ha en meny som innehåller två stycken input-fält,  namn och lösenord, samt en knapp för att logga in.
 * Namn och lösenord skall vara hårdkodade variabler i ditt javascript och vara: namn = "test", lösenord = "1234".
 * Skriver du rätt namn och lösenord så skall du mötas av en ny sida som välkomnar dig till sidan.
